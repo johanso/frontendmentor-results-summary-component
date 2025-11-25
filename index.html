@@ -356,74 +356,46 @@
       </section>
       <section class="summary" aria-labelledby="summary-title">
         <h2 id="summary-title" class="summary__title">Summary</h2>
-        <ul class="summary__list" role="list">
-          <li class="summary__item summary__item--reaction">
-            <div class="summary__category">
-              <img 
-                src="./assets/images/icon-reaction.svg" 
-                alt="" 
-                class="summary__icon"
-                aria-hidden="true"
-              >
-              <span class="summary__category-name">Reaction</span>
-            </div>
-            <div class="summary__score">
-              <strong>80</strong> 
-              <span class="summary__score-total">/ 100</span>
-            </div>
-          </li>
-          <li class="summary__item summary__item--memory">
-            <div class="summary__category">
-              <img 
-                src="./assets/images/icon-memory.svg" 
-                alt="" 
-                class="summary__icon"
-                aria-hidden="true"
-              >
-              <span class="summary__category-name">Memory</span>
-            </div>
-            <div class="summary__score">
-              <strong>92</strong> 
-              <span class="summary__score-total">/ 100</span>
-            </div>
-          </li>
-          <li class="summary__item summary__item--verbal">
-            <div class="summary__category">
-              <img 
-                src="./assets/images/icon-verbal.svg" 
-                alt="" 
-                class="summary__icon"
-                aria-hidden="true"
-              >
-              <span class="summary__category-name">Verbal</span>
-            </div>
-            <div class="summary__score">
-              <strong>61</strong> 
-              <span class="summary__score-total">/ 100</span>
-            </div>
-          </li>
-          <li class="summary__item summary__item--visual">
-            <div class="summary__category">
-              <img 
-                src="./assets/images/icon-visual.svg" 
-                alt="" 
-                class="summary__icon"
-                aria-hidden="true"
-              >
-              <span class="summary__category-name">Visual</span>
-            </div>
-            <div class="summary__score">
-              <strong>73</strong> 
-              <span class="summary__score-total">/ 100</span>
-            </div>
-          </li>
-        </ul>
+        <ul class="summary__list" role="list"></ul>
         <button class="summary__button" type="button">
           Continue
         </button>
       </section>
     </article>
   </main>
+
+  <script>
+    // 1. Seleccionamos el contenedor donde irán los items
+    const summaryList = document.querySelector('.summary__list');
+
+    fetch('./data.json')
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(item => {
+          
+          const listItem = document.createElement('li');
+          listItem.className = `summary__item summary__item--${item.category.toLowerCase()}`;
+          
+          listItem.innerHTML = `
+            <div class="summary__category">
+              <img 
+                src="${item.icon}" 
+                alt="Icono de ${item.category}" 
+                class="summary__icon"
+                aria-hidden="true"
+              >
+              <span class="summary__category-name">${item.category}</span>
+            </div>
+            <div class="summary__score">
+              <strong>${item.score}</strong> 
+              <span class="summary__score-total">/ 100</span>
+            </div>
+          `;
+          summaryList.appendChild(listItem);
+        });
+      })
+      .catch(error => console.error('Error cargando el JSON:', error));
+  </script>
 
 </body>
 </html>
