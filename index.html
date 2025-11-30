@@ -27,7 +27,7 @@
       padding: 0;
     }
 
-    img, picture, video, canvas, svg {
+    img {
       display: block;
       max-width: 100%;
     }
@@ -42,46 +42,63 @@
        CSS CUSTOM PROPERTIES
        ================================ */
     :root {
-      --color-red: hsl(0, 100%, 67%);
-      --color-yellow: hsl(39, 100%, 56%);
-      --color-teal: hsl(166, 100%, 37%);
-      --color-blue: hsl(234, 85%, 45%);
-      
-      --bg-red: hsla(0, 100%, 67%, 0.05);
-      --bg-yellow: hsla(39, 100%, 56%, 0.05);
-      --bg-teal: hsla(166, 100%, 37%, 0.05);
-      --bg-blue: hsla(234, 85%, 45%, 0.05);
-      
+      /* colors */
+      --color-white: hsl(0, 0%, 100%);
+      --color-black  : hsl(0, 0%, 0%);
+     
+      --color-navy-950  : hsl(224, 30%, 27%);    
+      --color-navy-200  : hsl(241, 100%, 89%);
+      --color-navy-50   : hsl(221, 100%, 96%);
+
+      --color-blue-800:   hsl(234, 85%, 45%);
+      --color-blue-50:    hsl(234, 71%, 97%);
+
+      --color-yellow-400: hsl(39, 100%, 56%);
+      --color-yellow-50:  hsl(38, 100%, 98%);
+
+      --color-red-400:    hsl(0, 100%, 67%);
+      --color-red-50:     hsl(0, 100%, 98%);
+
+      --color-green-500:  hsl(166, 100%, 37%);
+      --color-green-50:   hsl(162, 63%, 97%);
+
+
       /* Gradients */
-      --gradient-bg: linear-gradient(
-        180deg, 
-        hsl(252, 100%, 67%), 
-        hsl(241, 81%, 54%)
-      );
-      --gradient-circle: linear-gradient(
+      --gradient-1: linear-gradient(
         180deg,
         hsla(256, 72%, 46%, 1),
         hsla(241, 72%, 46%, 0)
       );
-      
-      /* Neutral Colors */
-      --color-white: hsl(0, 0%, 100%);
-      --color-pale-blue: hsl(221, 100%, 96%);
-      --color-lavender: hsl(241, 100%, 89%);
-      --color-dark-blue: hsl(224, 30%, 27%);
+
+      --gradient-2: linear-gradient(
+        180deg, 
+        hsl(252, 100%, 67%), 
+        hsl(241, 81%, 54%)
+      );
+
       
       /* Typography */
       --font-family: 'Hanken Grotesk', sans-serif;
       --font-weight-medium: 500;
       --font-weight-bold: 700;
       --font-weight-extrabold: 800;
+
+      --text-preset-1: normal var(--font-weight-extrabold) 4.5rem/1 var(--font-family);
+      --text-preset-2: normal var(--font-weight-extrabold) 3.5rem/1 var(--font-family);
+      --text-preset-3: normal var(--font-weight-bold) 2rem/1.3 var(--font-family);
+      --text-preset-4: normal var(--font-weight-bold) 1.5rem/1.3 var(--font-family);
+      --text-preset-5-bold: normal var(--font-weight-bold) 1.125rem/1.3 var(--font-family);
+      --text-preset-5-medium: normal var(--font-weight-medium) 1.125rem/1.3 var(--font-family);
+      --text-preset-6-bold: normal var(--font-weight-bold) 1rem/1.3 var(--font-family);
+      --text-preset-6-medium: normal var(--font-weight-medium ) 1rem/1.3 var(--font-family);
       
       /* Spacing */
-      --spacing-xs: 0.5rem;
-      --spacing-sm: 1rem;
-      --spacing-md: 1.5rem;
-      --spacing-lg: 2rem;
-      --spacing-xl: 2.5rem;
+      --spacing-0: 0;
+      --spacing-100: 0.5rem;
+      --spacing-200: 1rem;
+      --spacing-300: 1.5rem;
+      --spacing-400: 2rem;
+      --spacing-1000: 5rem;
       
       /* Border Radius */
       --radius-sm: 0.5rem;
@@ -95,28 +112,16 @@
        ================================ */
     body {
       font-family: var(--font-family);
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-      color: var(--color-dark-blue);
-      background-color: var(--color-pale-blue);
-      
-      /* Center component on page */
+      font-size: 1rem;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
 
     main {
       width: 100%;
-      display: flex;
-      justify-content: center;
     }
 
     /* ================================
-       RESULTS COMPONENT (BEM)
+       RESULTS COMPONENT
        ================================ */
     
     .results {
@@ -124,62 +129,59 @@
     }
 
     .results__panel {
-      background: var(--gradient-bg);
+      background: var(--gradient-2);
       border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-      padding: var(--spacing-lg) var(--spacing-xl);
-      text-align: center;
+      padding: var(--spacing-400);
       color: var(--color-white); 
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--spacing-md);
+      gap: var(--spacing-400);
+      text-align: center;
     }
 
     .results__title {
-      font-size: 1.125rem;
-      line-height: 1.3;
+      font: var(--text-preset-5-bold);
       font-weight: var(--font-weight-bold);
-      color: var(--color-lavender);
+      color: var(--color-navy-200);
     }
 
     .results__score-circle {
-      background: var(--gradient-circle);
-      width: 9rem;
-      height: 9rem;
+      background: var(--gradient-1);
       border-radius: var(--radius-circle);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      margin: 0;
+      align-items: center;    
+      width: 8.75rem;
+      height: 8.75rem;
     }
 
     .results__score-number {
-      font-size: 3.5rem;
-      font-weight: var(--font-weight-extrabold);
-      line-height: 1;
+      font: var(--text-preset-2);
       color: var(--color-white);
     }
 
     .results__score-total {
-      font-size: 1rem;
-      font-weight: var(--font-weight-bold);
-      color: var(--color-lavender);
-      opacity: 0.5;
+      font: var(--text-preset-6-bold);
+      color: var(--color-navy-200);
+      opacity: .5;
+    }
+
+    .result-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-100)
     }
 
     .results__rating {
-      font-size: 1.5rem;
-      line-height: 1.3;
-      font-weight: var(--font-weight-bold);
+      font: var(--text-preset-4);
       color: var(--color-white);
     }
 
     .results__description {
-      font-size: 1rem;
-      font-weight: var(--font-weight-medium);
-      color: var(--color-lavender);
-      line-height: 1.4;
+      font: var(--text-preset-6-medium);
+      color: var(--color-navy-200);
       max-width: 16.25rem;
     }
 
@@ -189,69 +191,67 @@
     .summary {
       display: flex;
       flex-direction: column;
-      padding: var(--spacing-md);
-      gap: var(--spacing-md);
+      padding: var(--spacing-400);
+      gap: var(--spacing-400);
     }
 
     .summary__title {
-      font-size: 1.125rem;
-      font-weight: var(--font-weight-bold);
-      color: var(--color-dark-blue);
+      font: var(--text-preset-5-bold);
+      color: var(--color-navy-950);
     }
 
     .summary__list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: var(--spacing-md);
+      gap: var(--spacing-200);
     }
 
     .summary__item {
-      font-size: 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: var(--spacing-sm);
+      padding: var(--spacing-200);
       border-radius: var(--radius-sm);
     }
 
     .summary__item--reaction {
-      background-color: var(--bg-red);
+      background-color: var(--color-red-50);
     }
 
     .summary__item--memory {
-      background-color: var(--bg-yellow);
+      background-color: var(--color-yellow-50);
     }
 
     .summary__item--verbal {
-      background-color: var(--bg-teal);
+      background-color: var(--color-green-50);
     }
 
     .summary__item--visual {
-      background-color: var(--bg-blue);
+      background-color: var(--color-blue-50);
     }
 
     .summary__category {
+      font: var(--text-preset-6-medium);
       display: flex;
       align-items: center;
-      gap: var(--spacing-xs);
-      font-weight: var(--font-weight-bold);
+      gap: var(--spacing-100);
     }
 
     .summary__item--reaction .summary__category-name {
-      color: var(--color-red);
+      color: var(--color-red-400);
     }
 
     .summary__item--memory .summary__category-name {
-      color: var(--color-yellow);
+      color: var(--color-yellow-400);
     }
 
     .summary__item--verbal .summary__category-name {
-      color: var(--color-teal);
+      color: var(--color-green-500);
     }
 
     .summary__item--visual .summary__category-name {
-      color: var(--color-blue);
+      color: var(--color-blue-800);
     }
 
     .summary__icon {
@@ -260,54 +260,49 @@
     }
 
     .summary__score {
-      font-weight: var(--font-weight-bold);
-      color: var(--color-dark-blue);
+      font: var(--text-preset-6-bold);
+      color: var(--color-navy-950);
     }
 
     .summary__score-total {
-      color: var(--color-dark-blue);
       opacity: 0.5;
     }
 
-    /* ================================
-       CONTINUE BUTTON
-       ================================ */
     .summary__button {
-      background-color: var(--color-dark-blue);
+      font: var(--text-preset-5-bold);
+      background-color: var(--color-navy-950);
       color: var(--color-white);
-      font-size: 1.125rem;
-      font-weight: var(--font-weight-bold);
-      padding: 1rem;
       border-radius: var(--radius-lg);
-      
-      transition: background-color 0.3s ease;
+      padding: var(--spacing-200);
     }
-
+    
     .summary__button:hover,
     .summary__button:focus {
-      background: var(--gradient-bg);
+      background: var(--gradient-2);
     }
 
     /* ================================
-       RESPONSIVE DESIGN (Desktop)
+       RESPONSIVE DESIGN (Tablet)
        ================================ */
-    @media (min-width: 48rem) { /* 768px */
+    @media screen and (min-width: 48rem) {
+      body {
+        background: var(--color-blue-50);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
       .results {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        border-radius: var(--radius-lg);
         background-color: var(--color-white);
+        border-radius: var(--radius-lg);
+        display: flex;
+        margin: 0 auto;
         width: max-content;
       }
 
       .results__panel {
         border-radius: var(--radius-lg);
-        padding: var(--spacing-lg) calc(var(--spacing-xl) + var(--spacing-md));
-        max-width: 21rem;
-      }
-
-      .results__title {
-        font-size: 1.5rem;
+        padding-inline: calc(var(--spacing-400) + var(--spacing-200));
       }
 
       .results__score-circle {
@@ -315,46 +310,64 @@
         height: 12.5rem;
       }
 
-      .results__score-number {
-        font-size: 4.5rem;
-      }
-
-      .results__rating {
-        font-size: 2rem;
+      .results__description {
+        font: var(--text-preset-5-medium);
+        max-width: 13rem;
       }
 
       .summary {
-        max-width: 21.75rem;
-        padding : var(--spacing-lg);
+        width: 20rem;
       }
 
-      .summary__list {
-        gap: var(--spacing-sm);
+      .summary__title {
+        font: var(--text-preset-4);
       }
-
-      .results__description {
-        font-size: 1.125rem;
-        max-width: 12.5rem;
+      
+      .summary__category,
+      .summary__score {
+        font: var(--text-preset-5-medium);
       }
     }
+
+    /* ================================
+       RESPONSIVE DESIGN (dektop)
+       ================================ */
+    @media screen and (min-width: 90rem) {
+
+      .results__title {
+        font: var(--text-preset-4);
+      }
+      .results__rating {
+        font: var(--text-preset-3);
+      }
+      .results__description {
+        max-width: 16.25rem;
+      }
+      .summary {
+        width: 23rem;
+      }
+    }
+
   </style>
 </head>
 <body>
 
   <main id="main" role="main">
     <article class="results">
-      <section class="results__panel" aria-labelledby="result-title">
+      <section class="results__panel">
         <h2 id="result-title" class="results__title">Your Result</h2>
-        <div class="results__score-circle" aria-label="Score: 76 out of 100">
+        <div class="results__score-circle">
           <span class="results__score-number">76</span>
           <span class="results__score-total">of 100</span>
         </div>
-        <p class="results__rating">Great</p>
-        <p class="results__description">
-          You scored higher than 65% of the people who have taken these tests.
-        </p>
+        <div class="result-info">
+          <p class="results__rating">Great</p>
+          <p class="results__description">
+            You scored higher than 65% of the people who have taken these tests.
+          </p>
+        </div>
       </section>
-      <section class="summary" aria-labelledby="summary-title">
+      <section class="summary">
         <h2 id="summary-title" class="summary__title">Summary</h2>
         <ul class="summary__list" role="list"></ul>
         <button class="summary__button" type="button">
@@ -365,7 +378,6 @@
   </main>
 
   <script>
-    // 1. Seleccionamos el contenedor donde irán los items
     const summaryList = document.querySelector('.summary__list');
 
     fetch('./data.json')
